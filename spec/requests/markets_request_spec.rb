@@ -15,33 +15,35 @@ describe 'Market API' do
     markets[:data].each do |market|
       expect(market).to have_key(:id) # Ask about this checkin, is this redundnant
       expect(market[:id]).to be_an(String)
+    
+      market_atrb = market[:attributes]
 
-      expect(market[:attributes]).to have_key(:name)
-      expect(market[:attributes][:name]).to be_a(String)
+      expect(market_atrb).to have_key(:name)
+      expect(market_atrb[:name]).to be_a(String)
 
-      expect(market[:attributes]).to have_key(:street)
-      expect(market[:attributes][:street]).to be_a(String)
+      expect(market_atrb).to have_key(:street)
+      expect(market_atrb[:street]).to be_a(String)
 
-      expect(market[:attributes]).to have_key(:city)
-      expect(market[:attributes][:city]).to be_a(String)
+      expect(market_atrb).to have_key(:city)
+      expect(market_atrb[:city]).to be_a(String)
 
-      expect(market[:attributes]).to have_key(:county)
-      expect(market[:attributes][:county]).to be_a(String)
+      expect(market_atrb).to have_key(:county)
+      expect(market_atrb[:county]).to be_a(String)
 
-      expect(market[:attributes]).to have_key(:state)
-      expect(market[:attributes][:state]).to be_an(String)
+      expect(market_atrb).to have_key(:state)
+      expect(market_atrb[:state]).to be_an(String)
 
-      expect(market[:attributes]).to have_key(:zip)
-      expect(market[:attributes][:zip]).to be_an(String)
+      expect(market_atrb).to have_key(:zip)
+      expect(market_atrb[:zip]).to be_an(String)
 
-      expect(market[:attributes]).to have_key(:lat)
-      expect(market[:attributes][:lat]).to be_an(String)
+      expect(market_atrb).to have_key(:lat)
+      expect(market_atrb[:lat]).to be_an(String)
 
-      expect(market[:attributes]).to have_key(:lon)
-      expect(market[:attributes][:lon]).to be_an(String)
+      expect(market_atrb).to have_key(:lon)
+      expect(market_atrb[:lon]).to be_an(String)
 
-      expect(market[:attributes]).to have_key(:vendor_count)
-      expect(market[:attributes][:vendor_count]).to be_an(Integer)
+      expect(market_atrb).to have_key(:vendor_count)
+      expect(market_atrb[:vendor_count]).to be_an(Integer)
     end
   end
 end
