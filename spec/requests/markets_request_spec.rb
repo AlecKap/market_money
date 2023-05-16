@@ -48,7 +48,7 @@ describe 'Market API' do
   end
 
   describe 'can get one market by its id' do
-    it 'happy path' do
+    it 'returns a market with id' do
       id = create(:market).id
 
       get "/api/v0/markets/#{id}"
@@ -92,7 +92,7 @@ describe 'Market API' do
       expect(market_atrb[:vendor_count]).to be_an(Integer)
     end
 
-    it 'sad path' do
+    it 'invalid id reuturns 404 error' do
       id = 12122332343
 
       get "/api/v0/markets/#{id}"
