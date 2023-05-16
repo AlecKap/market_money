@@ -80,3 +80,24 @@ VCR.configure do |config|
   config.default_cassette_options = { re_record_interval: 7.days }
   config.configure_rspec_metadata!
 end
+
+def test_data
+  @market1 = create(:market)
+  @market2 = create(:market)
+  @market3 = create(:market)
+
+  @vendor1 = create(:vendor)
+  @vendor2 = create(:vendor)
+  @vendor3 = create(:vendor)
+  @vendor4 = create(:vendor)
+  @vendor5 = create(:vendor)
+  @vendor6 = create(:vendor)
+
+  @market_vendor1 = create(:market_vendor, market: @market1, vendor: @vendor1)
+  @market_vendor2 = create(:market_vendor, market: @market1, vendor: @vendor2)
+  @market_vendor3 = create(:market_vendor, market: @market1, vendor: @vendor3)
+  @market_vendor4 = create(:market_vendor, market: @market2, vendor: @vendor1)
+  @market_vendor5 = create(:market_vendor, market: @market2, vendor: @vendor4)
+  @market_vendor6 = create(:market_vendor, market: @market3, vendor: @vendor5)
+  @market_vendor7 = create(:market_vendor, market: @market3, vendor: @vendor6)
+end
