@@ -13,7 +13,7 @@ describe 'Market API' do
     expect(markets[:data].count).to eq(3)
 
     markets[:data].each do |market|
-      expect(market).to have_key(:id) # Ask about this checkin, is this redundnant
+      expect(market).to have_key(:id)
       expect(market[:id]).to be_an(String)
     
       market_atrb = market[:attributes]
