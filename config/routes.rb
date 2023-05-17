@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         resources :vendors, only: [:index]
       end
 
-      resources :vendors, only: [:show, :create]
+      resources :vendors, only: [:show, :create, :update]
     end
   end
 end
