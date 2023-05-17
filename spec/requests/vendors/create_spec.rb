@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe 'can create a new vendor' do
   it 'with valid information' do
-    vendor_params = ({
+    vendor_params = {
       name: 'Murder on the Orient Express',
       description: 'Agatha Christie',
       contact_name: 'mystery',
       contact_phone: 'Filled with suspense.',
       credit_accepted: true
-      })
+    }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
     post '/api/v0/vendors', headers: headers, params: JSON.generate(vendor: vendor_params)
@@ -28,13 +28,13 @@ end
 
 describe 'can NOT create a new vendor' do
   it 'invalid vendor creation input returns a status 400 error' do
-    vendor_params = ({
-      name: 'Murder on the Orient Express',
+    vendor_params = {
+      name: 'RoketsRUs',
       description: '',
-      contact_name: 'mystery',
+      contact_name: 'Johnny Rokets',
       contact_phone: '',
       credit_accepted: false
-      })
+    }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
     post '/api/v0/vendors', headers: headers, params: JSON.generate(vendor: vendor_params)
