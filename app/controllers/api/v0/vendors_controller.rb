@@ -9,7 +9,7 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def create
-    render json: VendorSerializer.new(Vendor.create!(vendor_params))
+    render json: VendorSerializer.new(Vendor.create!(vendor_params)), status: :created
   end
 
   private
