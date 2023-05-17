@@ -5,16 +5,16 @@ class Api::V0::VendorsController < ApplicationController
     render json: VendorSerializer.new(@vendor)
   end
 
-  def create # consider move to Market::VendorsController
+  def create
     render json: VendorSerializer.new(Vendor.create!(vendor_params)), status: :created
   end
 
-  def update # consider move to Market::VendorsController
+  def update
     @vendor.update!(vendor_params)
     render json: VendorSerializer.new(@vendor)
   end
 
-  def destroy # consider move to Market::VendorsController
+  def destroy
     render json: @vendor.delete, status: 204
   end
 
