@@ -1,25 +1,20 @@
 class Api::V0::VendorsController < ApplicationController
   before_action :find_vendor, only: [:show, :update, :destroy]
-  
-  def index
-    market = Market.find(params[:market_id])
-    render json: VendorSerializer.new(market.vendors)
-  end
 
   def show
     render json: VendorSerializer.new(@vendor)
   end
 
-  def create
+  def create # consider move to Market::VendorsController
     render json: VendorSerializer.new(Vendor.create!(vendor_params)), status: :created
   end
 
-  def update
+  def update # consider move to Market::VendorsController
     @vendor.update!(vendor_params)
     render json: VendorSerializer.new(@vendor)
   end
 
-  def destroy
+  def destroy # consider move to Market::VendorsController
     render json: @vendor.delete, status: 204
   end
 
