@@ -85,6 +85,7 @@ def test_data
   @market1 = create(:market)
   @market2 = create(:market)
   @market3 = create(:market)
+  @market4 = create(:market)
 
   @vendor1 = create(:vendor)
   @vendor2 = create(:vendor)
@@ -100,4 +101,5 @@ def test_data
   @market_vendor5 = create(:market_vendor, market: @market2, vendor: @vendor4)
   @market_vendor6 = create(:market_vendor, market: @market3, vendor: @vendor5)
   @market_vendor7 = create(:market_vendor, market: @market3, vendor: @vendor6)
+  @market_vendor7 = create(:market_vendor, market: @market4, vendor: @vendor3)
 end
