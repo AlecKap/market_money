@@ -15,7 +15,7 @@ class Api::V0::VendorsController < ApplicationController
   end
 
   def destroy
-    render json: @vendor.delete, status: 204
+    @vendor.delete
   end
 
   private
