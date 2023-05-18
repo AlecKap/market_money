@@ -101,5 +101,5 @@ def test_data
   @market_vendor5 = create(:market_vendor, market: @market2, vendor: @vendor4)
   @market_vendor6 = create(:market_vendor, market: @market3, vendor: @vendor5)
   @market_vendor7 = create(:market_vendor, market: @market3, vendor: @vendor6)
-  @market_vendor7 = create(:market_vendor, market: @market4, vendor: @vendor3)
+  @market_vendor8 = create(:market_vendor, market: @market4, vendor: @vendor3)
 end

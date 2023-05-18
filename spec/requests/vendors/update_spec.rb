@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'can update an existing book' do
+describe 'can update an existing vendor' do
   it 'with a valid vendor id and valid input' do
     id = create(:vendor).id
     previous_name = Vendor.last.name
@@ -17,7 +17,7 @@ describe 'can update an existing book' do
   end
 end
 
-describe 'can NOT update an existing book' do
+describe 'can NOT update an existing vendor' do
   it 'updating with invalid vendor input returns a status 400 error' do
     id = create(:vendor).id
     vendor_params = { name: '' }

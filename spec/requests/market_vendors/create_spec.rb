@@ -40,29 +40,72 @@ describe 'can create a new MarketVendor' do
   end
 end
 
-# describe 'can NOT create a new vendor' do
-#   it 'invalid vendor creation input returns a status 400 error' do
-#     vendor_params = ({
-#       name: 'RoketsRUs',
-#       description: '',
-#       contact_name: 'Johnny Rokets',
-#       contact_phone: '',
-#       credit_accepted: false
-#       })
-#     headers = { 'CONTENT_TYPE' => 'application/json' }
+describe 'can NOT create a new market_vendor' do
+  it 'invalid market_id or vendor_id returns a status 404 error' do
+    test_data
+    market_vendor_params = {
+      market_id: @market4.id,
+      vendor_id: 34536465766
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+    post '/api/v0/market_vendors', headers: headers, params: JSON.generate(market_vendor: market_vendor_params)
 
-#     post '/api/v0/vendors', headers: headers, params: JSON.generate(vendor: vendor_params)
+    expect(response).to_not be_successful
+    expect(response.status).to eq(404)
 
-#     expect(response).to_not be_successful
-#     expect(response.status).to eq(400)
+    error_data = JSON.parse(response.body, symbolize_names: true)
 
-#     error_data = JSON.parse(response.body, symbolize_names: true)
+    expect(error_data).to have_key(:errors)
 
-#     expect(error_data).to have_key(:errors)
+    error_detail = error_data[:errors]
 
-#     error_detail = error_data[:errors]
+    expect(error_detail).to be_an(Array)
+    expect(error_detail[0][:details]).to eq('Validation failed: Vendor must exist')
+  end
 
-#     expect(error_detail).to be_an(Array)
-#     expect(error_detail[0][:details]).to eq("Validation failed: Description can't be blank, Contact phone can't be blank")
-#   end
-# end
+  it 'blank market_vendor creation input returns a status 400 error' do
+    test_data
+    market_vendor_params = {
+      market_id: "",
+      vendor_id: ""
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    post '/api/v0/market_vendors', headers: headers, params: JSON.generate(market_vendor: market_vendor_params)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    error_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(error_data).to have_key(:errors)
+
+    error_detail = error_data[:errors]
+
+    expect(error_detail).to be_an(Array)
+    expect(error_detail[0][:details]).to eq("Validation failed: Market must exist, Vendor must exist, Market can't be blank, Vendor can't be blank")
+  end
+
+  it 'returns a status 422 error when relation already exists' do
+    test_data
+    market_vendor_params = {
+      market_id: @market1.id,
+      vendor_id: @vendor1.id
+    }
+    headers = { 'CONTENT_TYPE' => 'application/json' }
+
+    post '/api/v0/market_vendors', headers: headers, params: JSON.generate(market_vendor: market_vendor_params)
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(422)
+
+    error_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(error_data).to have_key(:errors)
+
+    error_detail = error_data[:errors]
+
+    expect(error_detail).to be_an(Array)
+    expect(error_detail[0][:details]).to eq("Validation failed: Market vendor asociation between market with market_id=#{@market1.id} and vendor_id=#{@vendor1.id} already exists")
+  end
+end
