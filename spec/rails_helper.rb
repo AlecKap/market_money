@@ -103,3 +103,55 @@ def test_data
   @market_vendor7 = create(:market_vendor, market: @market3, vendor: @vendor6)
   @market_vendor8 = create(:market_vendor, market: @market4, vendor: @vendor3)
 end
+
+def market_search_test_data
+  # Market.destroy_all
+  @market1 = Market.create!(name: 'King Soopers',
+                            street: 'Main St.',
+                            city: 'Cityville',
+                            county: 'Hombolt',
+                            state: 'Colorado',
+                            zip: '80025',
+                            lat: '56.0980989879',
+                            lon: '-76.899879879987')
+  @market2 = Market.create!(name: 'Super kings',
+                            street: 'West St.',
+                            city: 'Broomfield',
+                            county: 'bolt',
+                            state: 'Colorado',
+                            zip: '80045',
+                            lat: '45.0980989879',
+                            lon: '-32.899879879987')
+  @market3 = Market.create!(name: 'FoodZone',
+                            street: 'Main St.',
+                            city: 'Naperville',
+                            county: 'Hombolt',
+                            state: 'Illinois',
+                            zip: '60565',
+                            lat: '86.0980989879',
+                            lon: '-46.899879879987')
+  @market4 = Market.create!(name: 'King Soopers',
+                            street: '287th St.',
+                            city: 'Broomfield',
+                            county: 'Broomfield',
+                            state: 'Colorado',
+                            zip: '80025',
+                            lat: '43.0980989879',
+                            lon: '-21.899879879987')
+  @market5 = Market.create!(name: 'Cub Foods',
+                            street: 'Main St.',
+                            city: 'Edina',
+                            county: 'Hombolt',
+                            state: 'Minnesota',
+                            zip: '84368',
+                            lat: '67.0980989879',
+                            lon: '-48.899879879987')
+  @market6 = Market.create!(name: 'Marianos',
+                            street: 'Hennipin Ave',
+                            city: 'Minneapolis',
+                            county: 'Hennipin',
+                            state: 'Colorado',
+                            zip: '80174',
+                            lat: '80.0980989879',
+                            lon: '-34.899879879987')
+end
