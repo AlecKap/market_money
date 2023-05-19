@@ -8,7 +8,7 @@ RSpec.describe Market, type: :model do
 
   describe 'Class Methods' do
     before :each do
-      market_search_test_data
+      market_test_data
     end
 
     describe 'by_state' do
