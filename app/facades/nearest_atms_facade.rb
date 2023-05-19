@@ -5,9 +5,7 @@ class NearestAtmsFacade
   end
 
   def atms
-    atm_details[:results].map do |atm|
-      Atm.new(atm)
-    end
+    atm_details[:results].map { |atm| Atm.new(atm) }
   end
 
   private

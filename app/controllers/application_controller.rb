@@ -10,11 +10,7 @@ class ApplicationController < ActionController::API
 
   def record_invalid(error)
     if error.to_s.include?('exist')
-      if error.to_s.include?('blank')
-        blank_field(error)
-      else
-        not_found(error)
-      end
+      blank_field(error)
     elsif params.key?(:market_vendor)
       prexisting_relation_error
     else
@@ -29,6 +25,10 @@ class ApplicationController < ActionController::API
   end
 
   def blank_field(error)
-    render json: ErrorSerializer.serializer(error), status: :bad_request
+    if error.to_s.include?('blank')
+      render json: ErrorSerializer.serializer(error), status: :bad_request
+    else
+      not_found(error)
+    end
   end
 end
