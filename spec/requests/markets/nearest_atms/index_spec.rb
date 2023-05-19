@@ -36,14 +36,7 @@ describe 'Market API' do
         expect(atm_atrb[:lat]).to be_an(Float)
         expect(atm_atrb[:lon]).to be_an(Float)
         expect(atm_atrb[:distance]).to be_an(Float)
-
       end
     end
   end
-
-  # describe 'CANNOT get cash dispensers naer a market' do
-  #   it 'returns a 404 status when an invalid param is passed' do
-
-  #   end
-  # end
 end

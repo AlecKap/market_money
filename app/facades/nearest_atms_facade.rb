@@ -13,10 +13,10 @@ class NearestAtmsFacade
   private
 
   def service
-   @_service ||= NearestAtmService.new
+    @_service ||= NearestAtmService.new
   end
 
   def atm_details
-    @atm_details ||= service.nearest_atms(@lat, @lon)
+    @_atm_details ||= service.nearest_atms(@lat, @lon)
   end
 end

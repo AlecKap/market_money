@@ -89,7 +89,6 @@ RSpec.describe Market, type: :model do
       end
     end
 
-
     describe 'by_name' do
       it 'returns an array of markets with names matching the query params' do
         test_params1 = { name: 'King Soopers' }
