@@ -134,5 +134,4 @@ def market_test_data
                     name: 'Marianos',
                     city: 'Minneapolis',
                     state: 'Colorado')
-
 end

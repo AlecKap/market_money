@@ -5,18 +5,16 @@ class NearestAtmsFacade
   end
 
   def atms
-    atm_details[:results].map do |atm|
-      Atm.new(atm)
-    end
+    atm_details[:results].map { |atm| Atm.new(atm) }
   end
 
   private
 
   def service
-   @_service ||= NearestAtmService.new
+    @_service ||= NearestAtmService.new
   end
 
   def atm_details
-    @atm_details ||= service.nearest_atms(@lat, @lon)
+    @_atm_details ||= service.nearest_atms(@lat, @lon)
   end
 end
