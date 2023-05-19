@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Market Search API' do
   before :each do
-    market_search_test_data
+    market_test_data
   end
 
   describe 'can search fo markets with valid search params.' do
