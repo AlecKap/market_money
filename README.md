@@ -3,7 +3,7 @@ You are working for a company developing an interface to help people find sustai
 
 Your job is to expose the data that powers this part of the site through an API that the front end would consume.
 * Ruby version
-
+3.1.1
 * System dependencies
 
 * Configuration
